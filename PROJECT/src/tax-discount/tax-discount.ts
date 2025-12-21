@@ -48,8 +48,9 @@ export class TaxDiscount {
     }
 
     onSubmit() {
+
         if (this.discountForm.valid) {
-            const dateMessage = this.tax.updateAndCheckDate();
+            const dateMessage = this.tax.updateAndCheckDate(new Date());
             this.alert(this.lan, dateMessage); 
            
         }
