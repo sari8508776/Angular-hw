@@ -13,9 +13,17 @@ import { TaxDiscountServiceService } from '../services/tax-discount-service.serv
 export class TaxDiscount {
     discountForm: FormGroup;
     lan: string; 
+    Direction: string = 'ltr';
 
     constructor(private fb: FormBuilder, private tax: TaxDiscountServiceService) {
         this.lan = this.tax.getLanData(); 
+        if (this.lan === 'he') {
+            this.Direction = 'rtl';
+        }
+        else{
+            this.Direction = 'ltr';
+        }
+
         this.discountForm = this.fb.group({
             name: ['', [Validators.required]],
             phone: ['', [Validators.required]],
@@ -26,17 +34,23 @@ export class TaxDiscount {
         });
     }
 
-    alert(language: string) {
+    alert(language: string, dateMessage?: string | null) {
+        let baseMessage = '';
         if (language === 'en') {
-            alert("The language is English and your data has been saved successfully");
+            baseMessage = "The language is English and your data has been saved successfully";
         } else if (language === 'he') {
-            alert("הנתונים שלך נשמרו בהצלחה");
+            baseMessage = "הנתונים שלך נשמרו בהצלחה";
         }
+        if (dateMessage) {
+            baseMessage += ' ' + dateMessage;
+        }
+        alert(baseMessage);
     }
 
     onSubmit() {
         if (this.discountForm.valid) {
-            this.alert(this.lan); 
+            const dateMessage = this.tax.updateAndCheckDate();
+            this.alert(this.lan, dateMessage); 
            
         }
     }

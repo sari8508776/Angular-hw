@@ -1,5 +1,5 @@
 
-<div class="form-container">
+<div class="form-container" [attr.dir]="Direction">
   <h1>בקשה להנחה בארנונה</h1>
   <form [formGroup]="discountForm" (ngSubmit)="onSubmit()" class="discount-form">
     <div class="form-group">
