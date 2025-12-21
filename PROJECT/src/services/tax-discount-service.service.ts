@@ -10,7 +10,7 @@ export class TaxDiscountServiceService {
     lastDate: Date | null = null;
 
     constructor() {
-        this.language = 'en';
+        this.language = 'he';
         this.lastDate = null;
     }
 
