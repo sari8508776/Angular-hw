@@ -1,5 +1,5 @@
 
-    <form [formGroup]="discountForm">
+  <form [formGroup]="discountForm" (ngSubmit)="onSubmit()">
       <label for="name">שם:</label>
       <input id="name" formControlName="name" required>
 
@@ -17,8 +17,8 @@
 
       <label for="comments">הערות:</label>
       <textarea id="comments" formControlName="comments"></textarea>
-      <label for="language" formControlName="language"></label>
-
+  <label for="language">שפה: {{ lan }}</label>
+  <button type="button" (click)="translate()">תרגום</button>
       <button type="submit">שלח</button>
     </form>
  
