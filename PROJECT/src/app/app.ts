@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TechnicianVisit } from '../technician-visit/technician-visit';
 import { TaxDiscount } from '../tax-discount/tax-discount';
 import { Summary } from '../summary/summary';
 import {  CustomerList } from '../customer-list/customer-list';
@@ -8,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [TechnicianVisit,TaxDiscount,Summary,CustomerList,CommonModule],
+  imports: [TaxDiscount,Summary,CustomerList,CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

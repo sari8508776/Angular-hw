@@ -28,16 +28,17 @@ export class TaxDiscount {
         });
     }
 
-    // Use a different method name to avoid confusion with the global alert
-    showAlert(language: string) {
+    alert(language: string, dateMessage?: string | null) {
+        let baseMessage = '';
         if (language === 'en') {
-            window.alert("The language is English and your data has been saved successfully");
+            baseMessage = "The language is English and your data has been saved successfully";
         } else if (language === 'he') {
-            window.alert("הנתונים שלך נשמרו בהצלחה");
-        } else {
-            // Fallback if language isn't set to 'en' or 'he'
-            window.alert("Your data has been saved successfully");
+            baseMessage = "הנתונים שלך נשמרו בהצלחה";
         }
+        if (dateMessage) {
+            baseMessage += ' ' + dateMessage;
+        }
+        alert(baseMessage);
     }
 
     translate() {
@@ -100,18 +101,11 @@ export class TaxDiscount {
         if (formEl) formEl.dir = lang === 'he' ? 'rtl' : 'ltr';
     }
     onSubmit() {
-        if(this.lastDate){
-            const currentDate = new Date();
-            if (currentDate > this.lastDate) {
-                window.alert("אנו מצטערים, עברו כבר " + (currentDate.getTime() - this.lastDate.getTime()) / (1000 * 60 * 60 * 24) + " ימים מזמן הגשת הבקשות");
-                return;
-            }
-        }       
-        // if (this.discountForm.valid) {
-        //     this.showAlert(this.lan);
-        // } else {
-        //     // If form is invalid, mark controls as touched so validation messages can show
-        //     this.discountForm.markAllAsTouched();
-        // }
+
+        if (this.discountForm.valid) {
+            const dateMessage = this.tax.updateAndCheckDate(new Date());
+            this.alert(this.lan, dateMessage); 
+           
+        }
     }
 }
