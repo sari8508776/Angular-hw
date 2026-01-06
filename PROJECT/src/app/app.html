@@ -2,5 +2,20 @@
 <!-- <app-technician-visit></app-technician-visit> -->
 <!-- <app-tax-discount-request></app-tax-discount-request> -->
  <!-- <app-tax-discount></app-tax-discount> -->
- <app-summary *ngIf="isAdmin"></app-summary>
- <app-customer-list *ngIf="isAdmin==false"></app-customer-list>
+  <!-- <app-apartment-home></app-apartment-home>
+  <app-forsale></app-forsale>
+  <app-lehaskir></app-lehaskir>
+  <app-voction></app-voction> -->
+  <nav>
+    <!-- תצוגת הניתובים שמות מתואמים לרשימת הניתובים -->
+    <!-- הגדרת class כאשר הניתוב פעיל -->
+    <a routerLink="/app-apartment-home" routerLinkActive="active" class="link">בית   </a>
+    <a routerLink="/forsale"  routerLinkActive="active" class="link">למכירה </a>
+    <a routerLink="/app-lehaskir"  routerLinkActive="active" class="link">השכרה </a>
+    <a routerLink="app-voction"  routerLinkActive="active" class="link">חופשה </a>
+
+</nav>
+<router-outlet>
+
+
+</router-outlet>

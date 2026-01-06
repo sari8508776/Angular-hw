@@ -1,41 +1,22 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { TechnicianVisit } from '../technician-visit/technician-visit';
 import { TaxDiscount } from '../tax-discount/tax-discount';
-import { Summary } from '../summary/summary';
-import {  CustomerList } from '../customer-list/customer-list';
-import { CommonModule } from '@angular/common';
+import { Forsale } from '../apartments/forsale/forsale';
+import { Lehaskir } from '../apartments/lehaskir/lehaskir';
+import { Voction } from '../apartments/voction/voction';
+import { ApartmentHome } from '../apartments/apartment-home/apartment-home';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  imports: [TaxDiscount,Summary,CustomerList,CommonModule],
+  imports: [RouterOutlet,RouterModule,TechnicianVisit,TaxDiscount,Forsale,Lehaskir,Voction,ApartmentHome],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
 
   protected readonly title = signal('PROJECT');
-permission:string="admin";
- isAdmin:boolean=true;
-  getPromise(): Promise<string> {
-        if(this.permission==="admin")
-        return Promise.resolve(this.permission);
-
-        return Promise.reject("secratery");
-
-    }
-
-    ngOnInit() {
-  this.getPromise()
-    .then(() => {
-      this.isAdmin = true;
-    })
-    .catch(() => {
-      this.isAdmin = false;
-    });
-}
-
-
-
 
   
 }

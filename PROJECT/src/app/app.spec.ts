@@ -1,14 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { TechnicianVisit } from '../technician-visit/technician-visit';
-import { TaxDiscount } from '../tax-discount/tax-discount'; 
-  
-
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TechnicianVisit, TaxDiscount],
+      imports: [TechnicianVisit],
     }).compileComponents();
   });
 
