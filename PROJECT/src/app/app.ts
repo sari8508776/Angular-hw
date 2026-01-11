@@ -7,17 +7,18 @@ import { Lehaskir } from '../apartments/lehaskir/lehaskir';
 import { Voction } from '../apartments/voction/voction';
 import { ApartmentHome } from '../apartments/apartment-home/apartment-home';
 import { routes } from './app.routes';
+import { SearchPipe } from './search-pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,RouterModule,TechnicianVisit,TaxDiscount,Forsale,Lehaskir,Voction,ApartmentHome],
+  imports: [RouterOutlet,RouterModule,TechnicianVisit,TaxDiscount,Forsale,Lehaskir,Voction,ApartmentHome,SearchPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
 
   protected readonly title = signal('PROJECT');
-
+arr=[1,2,3];
   
 }
 // import { Component } from '@angular/core';
